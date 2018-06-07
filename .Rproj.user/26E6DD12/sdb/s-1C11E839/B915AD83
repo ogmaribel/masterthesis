@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "fl<-read.csv('/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/nogales_data_curves/lhfz_f.csv', header = FALSE, sep = \",\" ) \nfl$V1<-NULL\nfl$V2<-NULL\n#fl<-t(fl)\nlibrary(dtw)\nfl <- as.data.frame(fl)\nfl[is.na(fl)] <- 0\ndistMatrix <- dist(fl, method=\"DTW\")\n#alignment<-dtw(fl$V1,fl$V2,keep=TRUE);\n\ndsmx <- as.matrix(distMatrix )\nwrite.table(dsmx  , file='/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/nogales_data_curves/users/distmatrixleft.csv', row.names = FALSE,  col.names = FALSE, sep = \",\", append=TRUE)\nrequire(cluster)\npclust<-pam(dsmx, 2)\nspclust<-silhouette(pclust)\npclusttable<-pclust$clustering\npclustdt<-as.data.frame(pclusttable)\npclustdt<-t(pclustdt)\nwrite.table(pclustdt  , file='/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/nogales_data_curves/clusterleft.csv', row.names = FALSE,  col.names = FALSE, sep = \",\")\n",
+    "created" : 1497262637777.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3905203862",
+    "id" : "B915AD83",
+    "lastKnownWriteTime" : 1490616100,
+    "last_content_update" : 1490616100,
+    "path" : "~/MIT/I-WALKER/i-walker-Atia/clustersbn.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

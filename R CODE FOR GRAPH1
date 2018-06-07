@@ -1,0 +1,146 @@
+
+base<-read.csv('/Users/maribelojeda/WalkAnalysis-master/base2.csv', header = TRUE, sep = "," ) 
+base <- as.data.frame(base) #We transpose the dataframe of the csv document 
+
+
+for(i in 149:159){
+    t2=as.character(i)
+    title="Dimension:3  Num.Clust:2  wlen:132  num.words2  word len:6"
+    baseg<- subset(base,Test.number==t2)
+    link2='/Users/maribelojeda/WalkAnalysis-master/Results/C-10_D-4/'
+    
+    library(ggplot2)
+    
+    
+    link3<-paste(link2,t2,'_ALHX.jpeg', sep = "")
+    jpeg(file = link3)
+     print( plot(baseg$ALHX, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+     
+     link4<-paste(link2,t2,'_ALHY.jpeg', sep = "")
+     jpeg(file = link4)
+     print( plot(baseg$ALHY, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+     
+     link5<-paste(link2,t2,'_ALHZ.jpeg', sep = "")
+     jpeg(file = link5)
+     print( plot(baseg$ALHZ, col=baseg$Cluster,main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+     
+     link6<-paste(link2,t2,'_ARHX.jpeg', sep = "")
+     jpeg(file = link6)
+     print( plot(baseg$ARHX, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+     
+     link7<-paste(link2,t2,'_ARHY.jpeg', sep = "")
+     jpeg(file = link7)
+     print( plot(baseg$ARHY, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+     
+     link8<-paste(link2,t2,'_ARHZ.jpeg', sep = "")
+     jpeg(file = link8)
+     print( plot(baseg$ARHZ, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+     
+     link9<-paste(link2,t2,'_SLHX.jpeg', sep = "")
+     jpeg(file = link9)
+     print( plot(baseg$SLHX, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+     
+     link10<-paste(link2,t2,'_SLHY.jpeg', sep = "")
+     jpeg(file = link10)
+     print( plot(baseg$SLHY, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+     
+     link11<-paste(link2,t2,'_SLHZ.jpeg', sep = "")
+     jpeg(file = link11)
+     print( plot(baseg$SLHZ, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+     
+     link12<-paste(link2,t2,'_SRHX.jpeg', sep = "")
+     jpeg(file = link12)
+     print( plot(baseg$SRHX, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+     
+     link13<-paste(link2,t2,'_SRHY.jpeg', sep = "")
+     jpeg(file = link13)
+     print( plot(baseg$SRHY, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+     
+     link14<-paste(link2,t2,'_SRHZ.jpeg', sep = "")
+     jpeg(file = link14)
+     print( plot(baseg$SRHZ, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+     dev.off()
+    
+
+
+#TO PLOT HISTOGRAMS
+  link15<-paste(link2,t2,'_nof.jpeg', sep = "")
+  jpeg(file = link15)
+ print( ggplot(baseg, aes(x=baseg$Cluster, color=baseg$NOFT, fill=baseg$NOFT)) + 
+    geom_histogram()+theme_bw() +ggtitle(baseg$Label[1])+ theme(
+      plot.title = element_text(size=12, face="bold")))
+  dev.off()
+ 
+   
+   link16<-paste(link2,t2, 'mec.jpeg', sep = "")
+   jpeg(file = link16)
+   print(ggplot(baseg, aes(x=baseg$Cluster, color=baseg$MECT, fill=baseg$MECT)) +
+     geom_histogram()+theme_bw()+ggtitle(baseg$Label[1])+ theme(
+       plot.title = element_text(size=12, face="bold")))
+   dev.off()
+   
+   link17<-paste(link2,t2, 'barthel.jpeg', sep = "")
+   jpeg(file = link17)
+   print( ggplot(baseg, aes(x=baseg$Cluster, color=baseg$BARTHELT, fill=baseg$BARTHELT)) +
+     geom_histogram()+theme_bw()+ggtitle(baseg$Label[1])+ theme(
+       plot.title = element_text(size=12, face="bold")))
+   dev.off()
+   
+   link18<-paste(link2,t2, 'tinetit.jpeg', sep = "")
+   jpeg(file = link18)
+   print(ggplot(baseg, aes(x=baseg$Cluster, color=baseg$TINETIT, fill=baseg$TINETIT)) +
+     geom_histogram()+theme_bw()+ggtitle(baseg$Label[1])+ theme(
+       plot.title = element_text(size=12, face="bold")))
+   dev.off()
+   
+   link19<-paste(link2,t2, 'gender.jpeg', sep = "")
+   jpeg(file = link19)
+   print(ggplot(baseg, aes(x=baseg$Cluster, color=baseg$GenderT, fill=baseg$GenderT)) +
+     geom_histogram()+theme_bw()+ggtitle(baseg$Label[1])+ theme(
+       plot.title = element_text(size=12, face="bold")))
+   dev.off()
+   
+   link20<-paste(link2,t2, 'height.jpeg', sep = "")
+   jpeg(file = link20)
+   print(ggplot(baseg, aes(x=baseg$Cluster, color=baseg$HeightT, fill=baseg$HeightT)) +
+     geom_histogram()+theme_bw()+ggtitle(baseg$Label[1])+ theme(
+       plot.title = element_text(size=12, face="bold")))
+   dev.off()
+
+    
+    link21<-paste(link2,t2, '_3dtest.jpeg', sep = "")
+    jpeg(file = link21)
+    print(plot_ly(baseg, y = ~ALHY, x=~Cluster, color = ~Cluster, type = "box"))
+    dev.off()
+    
+    link22<-paste(link2,t2, '_3dtest.jpeg', sep = "")
+    jpeg(file = link22)
+    print(plot_ly(baseg, x = ~ALHX, y = ~Cluster, z = ~SDLHX, color = ~Lamda, colorscale = c('#FFE1A1', '#683531')))
+    dev.off()
+    
+    link14<-paste(link2,t2,'_Length.jpeg', sep = "")
+    jpeg(file = link14)
+    print( plot(baseg$Length, col=baseg$Cluster, main = baseg$Label[1], cex.main=1)) 
+    dev.off()
+    
+    link14<-paste(link2,t2,'_TinetivsBarthel-age.jpeg', sep = "")
+    jpeg(file = link14)
+    print( plot(baseg$TINETI, baseg$BARTHEL, col=baseg$Age, main = baseg$Label[1], cex.main=1)) 
+    dev.off()
+    
+    ggboxplot(baseg, x = baseg$ALZFT, y = baseg$Cluster, color = "group", palette = c("#00AFBB", "#E7B800"), ylab = "Average Force Z", xlab = "Cluster")
+     
+
+	
+}   

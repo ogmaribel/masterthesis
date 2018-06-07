@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\nfl2<-read.csv('/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/nogales_data_curves/openfilesall4.csv', header = FALSE, sep = \",\" ) \nfl2 <- as.data.frame(fl2) #We transpose the dataframe of the csv document \n\nlink<-'/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/nogales_data/output/'\n\nfor(all in 1:length(fl2$V1)){ #length(fl2$V1)\n  link2<-fl2$V2[all]\n  link2<-as.character(link2)\n  link3<-fl2$V1[all]\n  link3<-as.character(link3)\n  link4<-paste(link, link2,'/', link3, sep = \"\")\n  link4<-toString(link4)\n  \n  fl<-read.csv(link4, header = FALSE, sep = \":\" ) \n  fl <- as.data.frame(fl) \n  \n  #imprimir link2, user ID, unix time, lamda\n  dt<-link2\n  userid<-fl$V2[1]\n  utime<-fl$V2[3]\n  lamda<-fl$V2[6]\n  \n  usrdf<- data.frame(dt, userid, utime, lamda)\n  write.table(usrdf, file='/Users/maribelojeda/WalkAnalysis-master/data.csv', row.names = FALSE,  col.names = FALSE, sep = \",\", append=TRUE)\n}\n\n",
+    "created" : 1497642203346.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3383664877",
+    "id" : "2B7229CD",
+    "lastKnownWriteTime" : 1492943559,
+    "last_content_update" : 1492943559,
+    "path" : "~/MIT/I-WALKER/i-walker-Atia/readuser.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

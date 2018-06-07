@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "fl<-read.csv('/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/terceranalisis/gaits2.csv', header = FALSE, sep = \",\" ) \nm1<-mean(fl$V1,na.rm=TRUE)\nfl[fl == 0] <- NA\nvector<-as.vector(t(fl))\nvector<-na.omit(vector)\n\nnr<-116\nnc<-3\nmatriz<-matrix(data=0, nrow = nr, ncol= nc)\nmatriz1<-matrix(data=0, nrow = nr, ncol= nc)\n\nhist(vector,  main=\"Histogram for gait distance\",  xlab=\"gait distance\",  border=\"blue\",  col=\"green\",  las=1, breaks=3, prob = TRUE, ylim=c(0,2))\n\nfor(i in 1:nr){\n      sms<-0\n      x<- do.call(rbind.data.frame, fl[i])\n      x<-t(x)\n      cat<-cut(x, c(0,0.53,1.06,1.6))\n      sm<-summary(cat)\n      sms<-sum(sm)-sm[4]\n      print(sm)\n      \n      for(j in 1:nc){\n        matriz1[i,j]<-as.numeric((sm[j]))\n      }\n      \n      for(j in 1:nc){\n          matriz[i,j]<-as.numeric((sm[j])/sms)\n      }\n}\n\nmatriz1<-as.data.frame(matriz1)\nmatriz2<-as.data.frame(matriz)\nwrite.table(matriz1, file='/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/terceranalisis/matrixint.csv', row.names = FALSE,  col.names = FALSE, sep = \",\", append=FALSE)\nwrite.table(matriz2, file='/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/terceranalisis/matrixfrac.csv', row.names = FALSE,  col.names = FALSE, sep = \",\", append=FALSE)",
+    "created" : 1498478188771.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1261259704",
+    "id" : "AA193067",
+    "lastKnownWriteTime" : 1497881636,
+    "last_content_update" : 1497881636,
+    "path" : "~/MIT/I-WALKER/i-walker-Atia/terceranalisis/previous/histograms.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

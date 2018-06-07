@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "fz<-employee <- c('ChangeinForceZ')\nprintdf<-data.frame(fz)\n\nfor(all in 1:42){ \n  #Load the file to a dataframe\n  link2<-toString(all)\n  link3<-link2\n  link2<-paste('/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/terceranalisis/Straightpath/cvi', link2,'.mat.csv', sep = \"\")\n  link4<-toString(link2)\n  fl<-read.csv(link4, header = TRUE, sep = \",\" ) \n  fl<- as.data.frame(fl) \n  \n  fzl <- fl[5]\n  fzr <- fl[6]\n  \n  fz2<-data.frame(fzl,fzr)\n  \n  mzl <-array(length(fzl))\n  mzr <-array(length(fzl))\n  sz <-array(length(fzl))\n  \n  #plot.ts(mzl, mzr, pch='l',main = link3, cex.main=1)\n  ts.plot(fz2,col=c(rep(\"blue\"),rep(\"black\")))\n\n  \n  mzl[1]<-0\n  mzr[1]<-0\n  sz[1]<-0\n  \n  for(i in 2:(length(fzl[,1]))){\n    mzl[i]<-abs(abs(fzl[i,1])-abs(fzl[i-1,1]))\n    mzr[i]<-abs(abs(fzr[i,1])-abs(fzr[i-1,1]))\n    sz[i]<-mzl[i]+mzl[i]\n  }\n\n  tp<-sum(sz)\n  nombre<-paste('cvi', toString(all), sep = \"\")\n  printdf[ , nombre] <- tp\n}\n#Print result\nwrite.table(printdf  , file='/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/terceranalisis/Straightpath/changeZforces.csv', row.names = FALSE,  col.names = TRUE, sep = \",\")\n",
+    "created" : 1501674971737.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "25029500",
+    "id" : "A553C443",
+    "lastKnownWriteTime" : 1501678070,
+    "last_content_update" : 1501678070072,
+    "path" : "~/WalkAnalysis-master/getchangeinforces.R",
+    "project_path" : "getchangeinforces.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

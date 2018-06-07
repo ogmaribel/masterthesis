@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\nbase<-read.csv('/Users/maribelojeda/WalkAnalysis-master/base.csv', header = TRUE, sep = \",\" ) \nbase <- as.data.frame(base) #We transpose the dataframe of the csv document \n\n\nfor(i in 1:1){\n  t2=as.character(i)\n  title=\"Dimension:3  Num.Clust:2  wlen:132  num.words2  word len:6\"\n  baseg<- subset(base,Test.number==t2)\n  link2='/Users/maribelojeda/WalkAnalysis-master/Results/Varios/'\n  \n  library(ggplot2)\n  library(plotly)\n  \n  link22<-paste(link2,t2, '_clustering.jpeg', sep = \"\")\n  jpeg(file = link22)\n  print(plot_ly(baseg, x = ~Cluster, y = ~SDLHZ, z = ~ALHZ, color = ~Lamda, colorscale = c('#FFE1A1', '#683531')))\n  dev.off()\n  \n}   ",
+    "created" : 1497020178508.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "306043308",
+    "id" : "BF815839",
+    "lastKnownWriteTime" : 7954880231060414508,
+    "last_content_update" : 1497027906829,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

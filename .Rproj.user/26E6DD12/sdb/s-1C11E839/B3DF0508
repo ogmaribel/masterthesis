@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "for(all in 1:42){ \n  \n  #Load the file to a dataframe\n  link2<-toString(all)\n  link2<-paste('/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/terceranalisis/Straightpath/cvi', link2,'.mat.csv', sep = \"\")\n  link4<-toString(link2)\n  fl<-read.csv(link4, header = TRUE, sep = \",\" ) \n  fl<- as.data.frame(fl) \n  \n  #Create a new array with the distance travelled \n  dist <- fl[11]\n  dist2 <-array(length(dist))\n  \n  fexl <-array(length(dist))\n  fexr <-array(length(dist))\n  feyl <-array(length(dist))\n  feyr <-array(length(dist))\n  fezl <-array(length(dist))\n  fezr <-array(length(dist))\n  \n  \n  dist2[1]<-dist[1,1]\n  dist2[length(dist[,1])]<-0\n  fexl[1] <-dist2[1]+fl[1][1,1]\n  fexr[1] <-dist2[1]+fl[2][1,1]\n  feyl[1] <-dist2[1]+fl[3][1,1]\n  feyr[1] <-dist2[1]+fl[4][1,1]\n  fezl[1] <-dist2[1]+fl[5][1,1]\n  fezr[1] <-dist2[1]+fl[6][1,1]\n  \n  fexl[length(dist[,1])] <-fl[1][length(dist[,1]),1]\n  fexr[length(dist[,1])] <-fl[2][length(dist[,1]),1]\n  feyl[length(dist[,1])] <-fl[3][length(dist[,1]),1]\n  feyr[length(dist[,1])] <-fl[4][length(dist[,1]),1]\n  fezl[length(dist[,1])] <-fl[5][length(dist[,1]),1]\n  fezr[length(dist[,1])] <-fl[6][length(dist[,1]),1]\n  \n  for(i in 2:length(dist[,1])-1){\n    dist2[i]<-(dist[i+1,1]-dist[i,1])*100\n    fexl[i] <-dist2[i]+fl[1][i,1]\n    fexr[i] <-dist2[i]+fl[2][i,1]\n    feyl[i] <-dist2[i]+fl[3][i,1]\n    feyr[i] <-dist2[i]+fl[4][i,1]\n    fezl[i] <-dist2[i]+fl[5][i,1]\n    fezr[i] <-dist2[i]+fl[6][i,1]\n  }\n  \n  fl[ , 'travelled'] <- dist2\n  fl[ , 'fexl'] <- fexl\n  fl[ , 'fexr'] <- fexr\n  fl[ , 'feyl'] <- feyl\n  fl[ , 'feyr'] <- feyr\n  fl[ , 'fezl'] <- fezl\n  fl[ , 'fezr'] <- fezr\n  \n  #Print result\n  write.table(fl  , file=link4, row.names = FALSE,  col.names = TRUE, sep = \",\")\n  \n}",
+    "created" : 1501234381306.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "695618901",
+    "id" : "B3DF0508",
+    "lastKnownWriteTime" : 1501243868,
+    "last_content_update" : 1501243868131,
+    "path" : "~/WalkAnalysis-master/createnewevfunction.R",
+    "project_path" : "createnewevfunction.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "for(all in 1:42){ \n  #Load the file to a dataframe\n  link2<-toString(all)\n  link3<-link2\n  link2<-paste('/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/terceranalisis/tsmeter/cvi', link2,'_meter.csv', sep = \"\")\n  link4<-toString(link2)\n  fl<-read.csv(link4, header = TRUE, sep = \",\" ) \n  fl<- as.data.frame(fl) \n  \n  plot.ts(fl$speed, ylim=c(0,2), col= 'red', pch='l',main = link3, cex.main=1)\n  \n  plot.ts(fl$acc, ylim=c(-.3,.3), col= 'blue', pch='l',main = link3, cex.main=1)\n  abline(h=0, col=\"red\")\n}",
+    "created" : 1501616863436.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1133732425",
+    "id" : "113661B5",
+    "lastKnownWriteTime" : 1501671554,
+    "last_content_update" : 1501671554847,
+    "path" : "~/WalkAnalysis-master/plottimeseries.R",
+    "project_path" : "plottimeseries.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

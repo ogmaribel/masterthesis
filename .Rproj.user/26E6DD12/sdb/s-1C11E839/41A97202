@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "fz<-employee <- c('lx','rx','ly','ry','lz','rz','speed')\nprintdf<-data.frame(fz)\nfor(all in 1:42){ \n    #Load the file to a dataframe\n    link2<-toString(all)\n    link3<-link2\n    link2<-paste('/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/terceranalisis/Straightpath/cvi', link2,'.mat.csv', sep = \"\")\n    link4<-toString(link2)\n    fl<-read.csv(link4, header = TRUE, sep = \",\" ) \n    fl<- as.data.frame(fl) \n    \n    \n    #Create a new column that separates the distance every meter walked\n    dist <- fl[11]\n    st<-1\n    cl<-1\n    mclust <-array(length(dist))\n    mclust[1]<-cl\n    \n    for(i in 2:(length(dist[,1]))){\n      cond<-dist[i,1]-dist[st,1]\n      #print(paste(i,',',st,cond))\n      \n      if(cond > 1){\n        mclust[i]<-cl\n        st<-i\n        cl<-cl+1\n      }else{\n        mclust[i]<-cl\n      }\n    }\n    \n    fl[ , \"clase\"] <- mclust\n    \n    \n    \n    #Split the 6 forces per cathegory #Check the average force per cathegory and stimate the work \n    mc<-unique(mclust)\n    numb<-length(mc)\n    mxl<-length(mc)\n    mxr<-length(mc)\n    myl<-length(mc)\n    myr<-length(mc)\n    mzl<-length(mc)\n    mzr<-length(mc)\n    \n    speed<-length(mc)\n    acc<-length(mc)\n    \n    \n    for(i in 1:numb){\n      subs<-subset(fl,clase==i)\n      mxl[i] <- mean((subs[1])[,1])\n      mxr[i] <- mean((subs[2])[,1])\n      myl[i] <- mean((subs[3])[,1])\n      myr[i] <- mean((subs[4])[,1])\n      mzl[i] <- mean((subs[5])[,1])\n      mzr[i] <- mean((subs[6])[,1])\n      \n      speed[i]<-sum(((subs[12])[,1])/100)/(length((subs[12])[,1])*.01)\n      \n    }\n    \n    acc[1]<-0\n    \n    for(i in 2:numb){\n      subs2<-subset(fl,clase==i)\n      subs3<-subset(fl,clase==(i-1))\n      \n      acc[i]<-(speed[i]-speed[i-1])/((length((subs2[12])[,1])*.01)+(length((subs3[12])[,1])*.01))\n      print(((length((subs2[12])[,1])*.01)+(length((subs3[12])[,1])*.01)))\n    }\n    \n    #Calculate the average work of all cathegories\n    tseries<-data.frame(mxl, mxr, myl, myr, mzl, mzr, speed,acc)\n    link5<-paste(paste('/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/terceranalisis/tsmeter/cvi', link3,'_meter.csv', sep = \"\"))\n    write.table(tseries  , file=link5, row.names = FALSE,  col.names = TRUE, sep = \",\")\n    \n    tp<-length(7)\n    tp[1]<-mean(mxl)\n    tp[2]<-mean(mxr)\n    tp[3]<-mean(myl)\n    tp[4]<-mean(myr)\n    tp[5]<-mean(mzl)\n    tp[6]<-mean(mzr)\n    tp[7]<-mean(speed)\n    \n    nombre<-paste('cvi', toString(all), sep = \"\")\n    printdf[ , nombre] <- tp\n  \n}\n#Print result\nwrite.table(printdf  , file='/Users/maribelojeda/MIT/I-WALKER/i-walker-Atia/terceranalisis/Straightpath/meanwork.csv', row.names = FALSE,  col.names = TRUE, sep = \",\")\n",
+    "created" : 1501148372492.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4049863827",
+    "id" : "41A97202",
+    "lastKnownWriteTime" : 1501669965,
+    "last_content_update" : 1501669965227,
+    "path" : "~/WalkAnalysis-master/getwork.R",
+    "project_path" : "getwork.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
